@@ -1,0 +1,201 @@
+
+/* Shield Container attached to left hand */
+.rig-shield {
+    width: 60px;
+    height: 60px;
+    left: -20px;
+    top: -10px;
+    transform-origin: 50% 50%; /* Grip center pivot */
+    background: transparent;
+    border: none;
+    z-index: 10;
+}
+
+/* ==========================================================================
+   Culture Game - Articulated SVG Combat Rig
+   ========================================================================== */
+
+.fighter-rig {
+    position: absolute;
+    bottom: 0;
+    /* logical width/height mapped to scale in JS */
+}
+
+/* Base Body Part Shared Styles */
+.rig-part {
+    position: absolute;
+    background-color: transparent;
+    border: none;
+    box-sizing: border-box;
+    will-change: transform;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+/* Torso (Anchor) */
+.rig-torso {
+    width: 40px;
+    height: 70px;
+    left: 105px;
+    top: 70px;
+    transform-origin: 50% 100%;
+    z-index: 5;
+}
+
+/* Head */
+.rig-head {
+    width: 40px;
+    height: 45px;
+    left: -5px;
+    top: -35px;
+    transform-origin: 50% 90%;
+}
+
+/* Arms */
+.rig-arm-upper-l, .rig-arm-upper-r {
+    width: 20px;
+    height: 45px;
+    top: 10px;
+    transform-origin: 50% 20%;
+}
+
+.rig-arm-upper-l {
+    left: -10px;
+    z-index: 4;
+}
+
+.rig-arm-upper-r {
+    left: 30px;
+    z-index: 6;
+}
+
+.rig-arm-lower-l, .rig-arm-lower-r {
+    width: 20px;
+    height: 40px;
+    left: 0px;
+    top: 35px;
+    transform-origin: 50% 25%;
+}
+
+.rig-hand-l, .rig-hand-r {
+    width: 20px;
+    height: 25px;
+    left: 0px;
+    top: 30px;
+    transform-origin: 50% 40%;
+}
+
+/* Legs */
+.rig-leg-upper-l, .rig-leg-upper-r {
+    width: 24px;
+    height: 52px;
+    top: 60px;
+    transform-origin: 50% 20%;
+}
+
+.rig-leg-upper-l {
+    left: -2px;
+    z-index: 3;
+}
+
+.rig-leg-upper-r {
+    left: 18px;
+    z-index: 4;
+}
+
+.rig-leg-lower-l, .rig-leg-lower-r {
+    width: 20px;
+    height: 50px;
+    left: 2px;
+    top: 40px;
+    transform-origin: 50% 20%;
+}
+
+.rig-foot-l, .rig-foot-r {
+    width: 30px;
+    height: 26px;
+    left: -5px;
+    top: 40px;
+    transform-origin: 30% 40%;
+}
+
+/* Weapon Container attached to hand */
+.rig-weapon {
+    width: 60px;
+    height: 140px;
+    left: -25px;
+    top: -95px;
+    transform-origin: 50% 75%; /* Grip pivot */
+    background: transparent;
+    border: none;
+    z-index: -1;
+}
+
+/* ==========================================================================
+   Character-Specific SVG Overrides
+   ========================================================================== */
+
+/* Player (Hero) */
+.hero-rig .rig-torso { background-image: url('../assets/characters/player/torso.svg'); }
+.hero-rig .rig-head { background-image: url('../assets/characters/player/head.svg'); }
+.hero-rig .rig-arm-upper-l { background-image: url('../assets/characters/player/arm_upper_l.svg'); }
+.hero-rig .rig-arm-upper-r { background-image: url('../assets/characters/player/arm_upper_r.svg'); }
+.hero-rig .rig-arm-lower-l { background-image: url('../assets/characters/player/arm_lower_l.svg'); }
+.hero-rig .rig-arm-lower-r { background-image: url('../assets/characters/player/arm_lower_r.svg'); }
+.hero-rig .rig-hand-l { background-image: url('../assets/characters/player/hand_l.svg'); }
+.hero-rig .rig-hand-r { background-image: url('../assets/characters/player/hand_r.svg'); }
+.hero-rig .rig-leg-upper-l { background-image: url('../assets/characters/player/leg_upper_l.svg'); }
+.hero-rig .rig-leg-upper-r { background-image: url('../assets/characters/player/leg_upper_r.svg'); }
+.hero-rig .rig-leg-lower-l { background-image: url('../assets/characters/player/leg_lower_l.svg'); }
+.hero-rig .rig-leg-lower-r { background-image: url('../assets/characters/player/leg_lower_r.svg'); }
+.hero-rig .rig-foot-l { background-image: url('../assets/characters/player/foot_l.svg'); }
+.hero-rig .rig-foot-r { background-image: url('../assets/characters/player/foot_r.svg'); }
+.hero-rig .rig-shield { background-image: url('../assets/characters/player/shield.svg'); }
+.hero-rig .rig-weapon { background-image: url('../assets/characters/player/weapon.svg'); }
+
+/* Normal Enemy (Kerala Warrior) */
+.enemy-rig .rig-torso { background-image: url('../assets/characters/ai_normal/torso.svg'); }
+.enemy-rig .rig-head { background-image: url('../assets/characters/ai_normal/head.svg'); }
+.enemy-rig .rig-arm-upper-l { background-image: url('../assets/characters/ai_normal/arm_upper_l.svg'); }
+.enemy-rig .rig-arm-upper-r { background-image: url('../assets/characters/ai_normal/arm_upper_r.svg'); }
+.enemy-rig .rig-arm-lower-l { background-image: url('../assets/characters/ai_normal/arm_lower_l.svg'); }
+.enemy-rig .rig-arm-lower-r { background-image: url('../assets/characters/ai_normal/arm_lower_r.svg'); }
+.enemy-rig .rig-hand-l { background-image: url('../assets/characters/ai_normal/hand_l.svg'); }
+.enemy-rig .rig-hand-r { background-image: url('../assets/characters/ai_normal/hand_r.svg'); }
+.enemy-rig .rig-leg-upper-l { background-image: url('../assets/characters/ai_normal/leg_upper_l.svg'); }
+.enemy-rig .rig-leg-upper-r { background-image: url('../assets/characters/ai_normal/leg_upper_r.svg'); }
+.enemy-rig .rig-leg-lower-l { background-image: url('../assets/characters/ai_normal/leg_lower_l.svg'); }
+.enemy-rig .rig-leg-lower-r { background-image: url('../assets/characters/ai_normal/leg_lower_r.svg'); }
+.enemy-rig .rig-foot-l { background-image: url('../assets/characters/ai_normal/foot_l.svg'); }
+.enemy-rig .rig-foot-r { background-image: url('../assets/characters/ai_normal/foot_r.svg'); }
+.enemy-rig .rig-shield { background-image: url('../assets/characters/ai_normal/shield.svg'); }
+.enemy-rig .rig-weapon { background-image: url('../assets/characters/ai_normal/weapon.svg'); }
+
+/* Boss (Gurukkal Raman) */
+.boss-rig .rig-torso { background-image: url('../assets/characters/boss/torso.svg'); }
+.boss-rig .rig-head { background-image: url('../assets/characters/boss/head.svg'); }
+.boss-rig .rig-arm-upper-l { background-image: url('../assets/characters/boss/arm_upper_l.svg'); }
+.boss-rig .rig-arm-upper-r { background-image: url('../assets/characters/boss/arm_upper_r.svg'); }
+.boss-rig .rig-arm-lower-l { background-image: url('../assets/characters/boss/arm_lower_l.svg'); }
+.boss-rig .rig-arm-lower-r { background-image: url('../assets/characters/boss/arm_lower_r.svg'); }
+.boss-rig .rig-hand-l { background-image: url('../assets/characters/boss/hand_l.svg'); }
+.boss-rig .rig-hand-r { background-image: url('../assets/characters/boss/hand_r.svg'); }
+.boss-rig .rig-leg-upper-l { background-image: url('../assets/characters/boss/leg_upper_l.svg'); }
+.boss-rig .rig-leg-upper-r { background-image: url('../assets/characters/boss/leg_upper_r.svg'); }
+.boss-rig .rig-leg-lower-l { background-image: url('../assets/characters/boss/leg_lower_l.svg'); }
+.boss-rig .rig-leg-lower-r { background-image: url('../assets/characters/boss/leg_lower_r.svg'); }
+.boss-rig .rig-foot-l { background-image: url('../assets/characters/boss/foot_l.svg'); }
+.boss-rig .rig-foot-r { background-image: url('../assets/characters/boss/foot_r.svg'); }
+.boss-rig .rig-shield { background-image: url('../assets/characters/boss/shield.svg'); }
+.boss-rig .rig-weapon { background-image: url('../assets/characters/boss/weapon.svg'); }
+
+/* Specific weapon override for Gurukkal Raman */
+.boss-gurukkal .rig-weapon { 
+    background-image: url('../assets/characters/boss/urumi.svg'); 
+    width: 300px; 
+    height: 600px; 
+    left: -140px;
+    top: -530px;
+    transform-origin: 50% 92%; 
+}

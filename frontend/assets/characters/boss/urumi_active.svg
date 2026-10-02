@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 600">
+    <defs>
+        <linearGradient id="urumiGrip" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#8B4513" />
+            <stop offset="100%" stop-color="#5C3A21" />
+        </linearGradient>
+        <linearGradient id="urumiBlade" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#e0e0e0" />
+            <stop offset="50%" stop-color="#ffffff" />
+            <stop offset="100%" stop-color="#b0bec5" />
+        </linearGradient>
+        <filter id="bladeGlow">
+            <feGaussianBlur stdDeviation="2" result="blur" />
+            <feComposite in="SourceGraphic" in2="blur" operator="over" />
+        </filter>
+    </defs>
+    <!-- Handle -->
+    <rect x="142" y="530" width="16" height="50" rx="3" fill="url(#urumiGrip)" />
+    <!-- Pommel & Guard -->
+    <circle cx="150" cy="585" r="12" fill="#D4AF37" />
+    <path d="M 125 530 Q 150 510 175 530 L 165 535 Q 150 522 135 535 Z" fill="#D4AF37" />
+    <!-- Flexible Blade 1: Massive forward sweeping loop -->
+    <path d="M 150 525 C 250 400, 280 150, 150 50 C 20 0, 20 150, 100 250 C 180 350, 200 450, 120 500" fill="none" stroke="url(#urumiBlade)" stroke-width="5" stroke-linecap="round" filter="url(#bladeGlow)"/>
+    <!-- Flexible Blade 2: Wide secondary sweep -->
+    <path d="M 150 525 C 150 350, 250 100, 150 20 C 50 -60, -20 150, 60 300 C 140 450, 100 480, 80 500" fill="none" stroke="url(#urumiBlade)" stroke-width="3" stroke-linecap="round" opacity="0.8"/>
+</svg>

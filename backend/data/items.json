@@ -1,0 +1,112 @@
+[
+    {
+        "item_id": "item_urumi",
+        "name": "Urumi",
+        "type": "Weapon",
+        "region": "Kerala",
+        "historical_period": "Medieval",
+        "description": "A flexible sword that acts like a whip.",
+        "cultural_significance": "A highly dangerous weapon to both the wielder and opponent, mastered only by experienced Kalaripayattu warriors.",
+        "chapter_id": 1,
+        "unlock_condition": "Defeat Gurukkal Raman."
+    },
+    {
+        "item_id": "item_khanda",
+        "name": "Khanda",
+        "type": "Weapon",
+        "region": "Rajasthan",
+        "historical_period": "Medieval",
+        "description": "A double-edged straight sword.",
+        "cultural_significance": "An iconic weapon of the Rajputs and Sikhs, symbolizing martial honor and divine justice.",
+        "chapter_id": 2,
+        "unlock_condition": "Defeat General Vikram Singh."
+    },
+    {
+        "item_id": "item_bagh_nakh",
+        "name": "Bagh Nakh",
+        "type": "Weapon",
+        "region": "Maharashtra",
+        "historical_period": "17th Century",
+        "description": "A claw-like weapon designed to fit over the knuckles or be concealed under and against the palm.",
+        "cultural_significance": "Famously used by Shivaji Maharaj to defeat the Bijapur general Afzal Khan.",
+        "chapter_id": 3,
+        "unlock_condition": "Defeat Commander Tariq."
+    },
+    {
+        "item_id": "item_chola_coin",
+        "name": "Gold Kahavanu",
+        "type": "Artifact",
+        "region": "Tamil Nadu",
+        "historical_period": "11th Century AD",
+        "description": "An ancient gold coin depicting a tiger, the royal emblem of the Cholas.",
+        "cultural_significance": "Represents the vast economic power and trade network of the Chola empire.",
+        "chapter_id": 4,
+        "unlock_condition": "Find the hidden treasure chest."
+    },
+    {
+        "item_id": "item_nataraja",
+        "name": "Bronze Nataraja",
+        "type": "Artifact",
+        "region": "Tamil Nadu",
+        "historical_period": "10th Century AD",
+        "description": "A bronze sculpture depicting Shiva as the Lord of Dance.",
+        "cultural_significance": "A masterpiece of Chola bronze casting, symbolizing the rhythmic cosmic cycle of creation and destruction.",
+        "chapter_id": 4,
+        "unlock_condition": "Complete the Temple puzzle."
+    },
+    {
+        "item_id": "item_chola_shield",
+        "name": "Chola Bronze Shield",
+        "type": "Weapon",
+        "region": "Tamil Nadu",
+        "historical_period": "11th Century AD",
+        "description": "A sturdy circular shield adorned with the tiger emblem.",
+        "cultural_significance": "Used by the elite Chola infantry and naval boarding parties.",
+        "chapter_id": 4,
+        "unlock_condition": "Defeat Admiral Rajendra."
+    },
+    {
+        "item_id": "item_varaha_coin",
+        "name": "Gold Varaha",
+        "type": "Artifact",
+        "region": "Karnataka",
+        "historical_period": "16th Century",
+        "description": "A gold coin from the Vijayanagara empire, depicting a boar.",
+        "cultural_significance": "The Varaha (boar avatar of Vishnu) was the royal emblem of the Vijayanagara emperors, and their standard currency.",
+        "chapter_id": 5,
+        "unlock_condition": "Discover the royal treasury."
+    },
+    {
+        "item_id": "item_katar",
+        "name": "Katar (Punch Dagger)",
+        "type": "Weapon",
+        "region": "Rajasthan",
+        "historical_period": "Medieval",
+        "description": "A type of push dagger characterized by its H-shaped horizontal hand grip.",
+        "cultural_significance": "Unique to the Indian subcontinent, it became a symbol of status and martial prowess among Rajput nobles.",
+        "chapter_id": 2,
+        "unlock_condition": "Complete the armory challenge."
+    },
+    {
+        "item_id": "item_silambam_staff",
+        "name": "Silambam Staff",
+        "type": "Weapon",
+        "region": "Tamil Nadu",
+        "historical_period": "Ancient",
+        "description": "A smooth bamboo staff optimized for rapid strikes and blocks.",
+        "cultural_significance": "The primary weapon of Silambam, teaching practitioners essential skills of distance management and fluid movement.",
+        "chapter_id": 4,
+        "unlock_condition": "Master the staff training."
+    },
+    {
+        "item_id": "item_gaja_tusk",
+        "name": "Decorated Gaja Tusk",
+        "type": "Artifact",
+        "region": "Karnataka",
+        "historical_period": "15th Century",
+        "description": "An intricately carved ivory tusk representing war elephants.",
+        "cultural_significance": "Elephants (Gaja) were a massive tactical asset and symbol of royal power for the Vijayanagara army.",
+        "chapter_id": 5,
+        "unlock_condition": "Defeat Commander Krishnadeva."
+    }
+]

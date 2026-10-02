@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Culture Game: Explore India. Live the Legacy.</title>
+    <link rel="stylesheet" href="css/style.css?v=7">
+    <link rel="stylesheet" href="css/combat.css?v=7">
+    <link rel="stylesheet" href="css/combat-rig.css?v=7">
+    <link rel="stylesheet" href="css/mobile-controls.css?v=7">
+</head>
+
+<body>
+    <div id="game-container">
+
+        <!-- ============================================== -->
+        <!-- 0. LOGIN SCREEN                                -->
+        <!-- ============================================== -->
+        <div id="login-screen" class="screen">
+            <div class="home-content" style="max-width: 500px; padding: 40px; background: rgba(0,0,0,0.8); border: 2px solid var(--color-secondary); border-radius: 8px; position: relative;">
+                
+                <h2 style="color: var(--color-primary); margin-bottom: 20px;">NEW GAME</h2>
+
+                <div style="text-align: left; margin-bottom: 15px;">
+                    <label style="display: block; margin-bottom: 5px; color: var(--color-primary); font-weight: bold; font-size: 0.9rem; text-transform: uppercase;">Player Name</label>
+                    <input type="text" id="login-name" placeholder="Enter your name" style="width: 100%; padding: 10px; font-size: 1rem; background: #222; border: 1px solid #555; color: #fff; border-radius: 4px; box-sizing: border-box;">
+                </div>
+                
+                <div style="text-align: left; margin-bottom: 15px;">
+                    <label style="display: block; margin-bottom: 5px; color: var(--color-primary); font-weight: bold; font-size: 0.9rem; text-transform: uppercase;">Age</label>
+                    <input type="number" id="login-age" placeholder="Enter your age" style="width: 100%; padding: 10px; font-size: 1rem; background: #222; border: 1px solid #555; color: #fff; border-radius: 4px; box-sizing: border-box;">
+                </div>
+                
+                <div style="text-align: left; margin-bottom: 30px;">
+                    <label style="display: block; margin-bottom: 5px; color: var(--color-primary); font-weight: bold; font-size: 0.9rem; text-transform: uppercase;">Account Type</label>
+                    <input type="text" value="[ GUEST ACCOUNT ]" disabled style="width: 100%; padding: 10px; font-size: 1rem; background: #111; border: 1px solid #333; color: #888; border-radius: 4px; box-sizing: border-box; text-align: center;">
+                </div>
+                
+                <div id="login-error" class="message hidden" style="color: #ff3b3b; margin-bottom: 15px; text-shadow: 1px 1px 2px #000; text-align: center;"></div>
+                
+                <button class="btn" id="login-start-btn" style="width: 100%; padding: 15px; margin-bottom: 10px;" onclick="handleLogin()">START GAME</button>
+                <button class="btn btn-secondary" style="width: 100%; padding: 10px;" onclick="goToHome()">BACK TO MENU</button>
+            </div>
+        </div>
+
+        <!-- ============================================== -->
+        <!-- 1. HOME SCREEN                                 -->
+        <!-- ============================================== -->
+        <div id="home-screen" class="screen active">
+            <div id="backend-status"
+                style="position: absolute; top: 10px; right: 10px; font-size: 0.8rem; font-weight: bold; color: #a0a0a0; padding: 5px 10px; border-radius: 4px; background: rgba(0,0,0,0.5);">
+                🟡 OFFLINE MODE
+            </div>
+            <div class="home-content">
+                <h1 class="game-title">PORKURAL: Legacy of Bharath</h1>
+                <p class="tagline">Explore India. Live the Legacy.</p>
+                <div class="main-menu">
+                    <button class="btn" onclick="startNewGameFlow()">START</button>
+                    <button class="btn" id="btn-continue" onclick="handleContinue()">CONTINUE</button>
+                    <button class="btn" onclick="goToSettings()">SETTINGS</button>
+                    <button class="btn" onclick="goToCodex()">CODEX</button>
+                </div>
+                <div id="continue-msg" class="message hidden">No saved progress yet</div>
+            </div>
+        </div>
+
+
+
+        <!-- ============================================== -->
+        <!-- 3. CHAPTER SELECTION                           -->
+        <!-- ============================================== -->
+        <div id="chapters-screen" class="screen">
+            <h2>HISTORICAL JOURNEY</h2>
+            <p style="color: #aaa; text-align: center; margin-bottom: 20px; font-style: italic;">Travel through India's heritage, one chapter at a time.</p>
+            
+            <div style="text-align: center; margin-bottom: 30px; background: rgba(0,0,0,0.6); padding: 15px; border-radius: 8px; border: 1px solid var(--color-secondary); display: inline-block;">
+                <p style="margin: 0 0 10px 0; font-size: 1.1rem; color: #ddd;">CHAPTERS COMPLETED: <span id="journey-completed-count" style="color: var(--color-primary); font-weight: bold;">0</span> / 5</p>
+                <p style="margin: 0 0 10px 0; font-size: 1.1rem; color: #ddd;">CULTURAL DISCOVERIES: <span id="journey-discovery-count" style="color: #4caf50; font-weight: bold;">0</span> / 5</p>
+                <p style="margin: 0; font-size: 1.1rem; color: #ddd;">🧠 KNOWLEDGE SCORE: <span id="journey-knowledge-score" style="color: #9c27b0; font-weight: bold;">0</span></p>
+            </div>
+            
+            <div style="text-align: center; margin-bottom: 30px;">
+                <p style="color: #ccc; margin-bottom: 10px; font-weight: bold; letter-spacing: 1px;">JOURNEY PROGRESS</p>
+                <div id="journey-progress-dots" style="display: flex; justify-content: center; align-items: center; gap: 5px; font-size: 1.5rem; color: #555;">
+                    <!-- Populated by JS -->
+                </div>
+            </div>
+
+            <div class="chapter-list journey-path" id="journey-path-container" style="display: flex; flex-direction: column; align-items: center; gap: 0; position: relative;">
+                <!-- Chapters populated by JS -->
+            </div>
+            
+            <div class="nav-buttons" style="margin-top: 30px;">
+                <button class="btn btn-secondary" onclick="goToHome()">BACK</button>
+            </div>
+        </div>
+
+        <!-- ============================================== -->
+        <!-- 4. STORY SCREEN                                -->
+        <!-- ============================================== -->
+        <div id="story-screen" class="screen">
+            <h2 id="story-chapter-title">STORY</h2>
+            <div id="story-panel-container" class="story-panel-container cinematic-story-layout">
+                <div class="story-image-col">
+                    <img id="story-image" src="" alt="Historical Visual">
+                </div>
+                <div class="story-text-col">
+                    <h3 id="story-title" class="story-title">Title</h3>
+                    <div id="story-metadata" class="story-metadata">Region • Era</div>
+                    <p id="story-text" class="story-text">Story placeholder...</p>
+                </div>
+            </div>
+            <div class="nav-buttons">
+                <button class="btn btn-secondary" onclick="skipStory()">SKIP STORY</button>
+                <button class="btn" id="story-next-btn" onclick="nextStoryPanel()">NEXT</button>
+            </div>
+        </div>
+
+        <!-- ============================================== -->
+        <!-- 4.5 DISCOVERY SCREEN                           -->
+        <!-- ============================================== -->
+        <div id="discovery-screen" class="screen">
+            <h2>CULTURAL DISCOVERY</h2>
+            <div class="story-panel-container" style="flex-direction: column; align-items: center; text-align: center; max-width: 600px; margin: 0 auto; padding: 40px; background: rgba(0,0,0,0.8); border: 2px solid var(--color-primary); border-radius: 8px;">
+                <h3 id="discovery-topic" style="color: var(--color-primary); font-size: 2rem; margin-bottom: 20px;">Topic</h3>
+                <img id="discovery-img" src="" alt="Discovery Image" style="max-width: 100%; border-radius: 8px; margin-bottom: 20px; border: 1px solid var(--color-secondary);">
+                <p id="discovery-desc" style="font-size: 1.2rem; line-height: 1.6; margin-bottom: 30px;">
+                    Description
+                </p>
+                <div id="discovery-status" class="hidden" style="color: #4caf50; font-size: 1.2rem; margin-bottom: 20px;">
+                    <strong>✓ DISCOVERY FOUND</strong><br>Added to your Codex
+                </div>
+                <button id="discovery-add-btn" class="btn" onclick="addToCodexFromDiscovery()">ADD TO CODEX</button>
+                <button id="discovery-continue-btn" class="btn hidden" onclick="startChapterBattle()">CONTINUE</button>
+            </div>
+        </div>
+
+        <!-- ============================================== -->
+        <!-- 5. BATTLE SCREEN                               -->
+        <!-- ============================================== -->
+        <div id="battle-screen" class="screen">
+            <h2 id="battle-title">BATTLE</h2>
+
+            <div class="cinematic-arena" id="battle-arena">
+                <!-- UI Overlay (Absolute Positioned in CSS) -->
+                <div class="combat-ui-layer">
+                    <div class="fighter-info hero-info">
+                        <h3>Warrior</h3>
+                        <div class="fighter-style">Kalaripayattu</div>
+                        <div class="health-bar-container">
+                            <div id="player-health-bar" class="health-bar fill"></div>
+                        </div>
+                        <p id="player-health-text" class="health-text">100 / 100</p>
+                        <div class="stamina-bar-container" style="height: 6px; background: rgba(0,0,0,0.5); width: 100%; border-radius: 3px; margin-top: 5px;">
+                            <div id="player-stamina-bar" style="height: 100%; width: 100%; background: #4caf50; border-radius: 3px; transition: width 0.1s linear;"></div>
+                        </div>
+                        <div id="player-heal-cd" style="font-size: 0.8rem; color: #4caf50; margin-top: 4px; text-transform: uppercase;">H — HEAL | Cooldown: READY</div>
+                    </div>
+
+                    <div class="fighter-info enemy-info right-align">
+                        <h3 id="enemy-name">Kalari Warrior</h3>
+                        <div class="fighter-style" id="enemy-style">Traditional Fighter</div>
+                        <div class="health-bar-container">
+                            <div id="enemy-health-bar" class="health-bar fill enemy-fill"></div>
+                        </div>
+                        <p id="enemy-health-text" class="health-text">100 / 100</p>
+                        <div class="stamina-bar-container" style="height: 6px; background: rgba(0,0,0,0.5); width: 100%; border-radius: 3px; margin-top: 5px;">
+                            <div id="enemy-stamina-bar" style="height: 100%; width: 100%; background: #4caf50; border-radius: 3px; transition: width 0.1s linear; float: right;"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Engine renders here -->
+                <div id="battle-engine-container" class="engine-container"></div>
+            </div>
+
+            <div class="combat-log-container">
+                <ul id="combat-log"></ul>
+            </div>
+
+            <div id="battle-actions" class="controls-guide">
+                <p><strong>Controls:</strong> A/D to Move | W to Jump | Space to Dodge<br>J for Light Attack | K for Heavy Attack | L to Defend | H for Heal</p>
+            </div>
+
+            <div id="battle-end-nav" class="nav-buttons hidden">
+                <button class="btn" id="btn-continue-boss" onclick="goToBoss()">CONTINUE TO BOSS</button>
+            </div>
+        </div>
+
+        <!-- ============================================== -->
+        <!-- 6. BOSS SCREEN                                 -->
+        <!-- ============================================== -->
+        <div id="boss-screen" class="screen">
+            <h2>BOSS BATTLE</h2>
+
+            <div class="cinematic-arena" id="boss-arena">
+                <!-- UI Overlay -->
+                <div class="combat-ui-layer">
+                    <div class="fighter-info hero-info">
+                        <h3>Warrior</h3>
+                        <div class="fighter-style">Kalaripayattu</div>
+                        <div class="health-bar-container">
+                            <div id="boss-player-health-bar" class="health-bar fill"></div>
+                        </div>
+                        <div class="stamina-bar-container" style="height: 6px; background: rgba(0,0,0,0.5); width: 100%; border-radius: 3px; margin-top: 5px;">
+                            <div id="boss-player-stamina-bar" style="height: 100%; width: 100%; background: #4caf50; border-radius: 3px; transition: width 0.1s linear;"></div>
+                        </div>
+                        <div id="boss-player-heal-cd" style="font-size: 0.8rem; color: #4caf50; margin-top: 4px; text-transform: uppercase;">H — HEAL | Cooldown: READY</div>
+                    </div>
+
+                    <div class="fighter-info enemy-info boss-info right-align">
+                        <h3 id="boss-name">Gurukkal Raman</h3>
+                        <div class="fighter-style" id="boss-style">Kalari Master</div>
+                        <div class="health-bar-container">
+                            <div id="boss-health-bar" class="health-bar fill enemy-fill"></div>
+                        </div>
+                        <p id="boss-health-text" class="health-text">200 / 200</p>
+                    </div>
+                </div>
+                
+                <!-- Engine renders here -->
+                <div id="boss-engine-container" class="engine-container"></div>
+            </div>
+
+            <div class="combat-log-container">
+                <ul id="boss-combat-log"></ul>
+            </div>
+
+            <div id="boss-battle-actions" class="controls-guide">
+                <p><strong>Controls:</strong> A/D to Move | W to Jump | Space to Dodge<br>J for Light Attack | K for Heavy Attack | L to Defend | H for Heal</p>
+            </div>
+
+            <div id="boss-end-nav" class="nav-buttons hidden">
+                <button class="btn" onclick="goToChallenge()">CULTURAL CHALLENGE</button>
+            </div>
+        </div>
+
+        <!-- ============================================== -->
+        <!-- 6.5 DEFEAT SCREEN                              -->
+        <!-- ============================================== -->
+        <div id="defeat-screen" class="screen">
+            <h2 style="color: #ff3b3b;">YOU WERE DEFEATED</h2>
+            <div class="story-container" style="text-align: center; margin: 40px 0;">
+                <p style="font-size: 1.5rem; margin-bottom: 30px;">The Warrior has defeated you.</p>
+                <div class="nav-buttons" style="display: flex; flex-direction: column; gap: 20px; align-items: center;">
+                    <button class="btn" onclick="retryBattle()">RETRY BATTLE</button>
+                    <button class="btn" style="background: transparent; border-color: #888;" onclick="goToChapters()">RETURN TO CHAPTERS</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- ============================================== -->
+        <!-- 7. CULTURAL CHALLENGE SCREEN                   -->
+        <!-- ============================================== -->
+        <div id="challenge-screen" class="screen">
+            <h2 id="challenge-title">CULTURAL CHALLENGE</h2>
+
+            <div class="challenge-container">
+                <p id="challenge-question" class="question-text">Question goes here</p>
+                <div id="challenge-options" class="options-grid">
+                    <!-- Options populated by JS -->
+                </div>
+                <p id="challenge-feedback" class="feedback-text hidden"></p>
+            </div>
+
+            <div id="challenge-nav" class="nav-buttons hidden">
+                <button class="btn" onclick="completeChallenge()">CONTINUE</button>
+            </div>
+        </div>
+
+        <!-- ============================================== -->
+        <!-- 8. REWARD SCREEN                               -->
+        <!-- ============================================== -->
+        <div id="reward-screen" class="screen">
+            <h2>CHAPTER COMPLETE!</h2>
+            <div class="rewards-container">
+                <h3>Rewards Earned</h3>
+                <ul class="rewards-list">
+                    <li><span id="earned-xp" class="reward-val">+500</span> XP</li>
+                    <li><span id="earned-coins" class="reward-val">+100</span> Coins</li>
+                    <li><span id="earned-score" class="reward-val">+500</span> Score</li>
+                </ul>
+                <div class="current-stats">
+                    <p>Current Level: <span id="reward-level">1</span></p>
+                    <p>Total XP: <span id="reward-xp">0</span></p>
+                    <p>Total Coins: <span id="reward-coins">0</span></p>
+                    <p>Total Score: <span id="reward-score">0</span></p>
+                </div>
+            </div>
+            <div class="nav-buttons">
+                <button class="btn" onclick="showLearningSummary()">CONTINUE</button>
+            </div>
+        </div>
+
+        <!-- ============================================== -->
+        <!-- 8.5 LEARNING SUMMARY SCREEN                    -->
+        <!-- ============================================== -->
+        <div id="learning-summary-screen" class="screen">
+            <h2>CHAPTER COMPLETE</h2>
+            <h3 style="color: var(--color-primary); margin-bottom: 30px;">WHAT YOU LEARNED</h3>
+            
+            <div class="story-panel-container" style="flex-direction: column; max-width: 600px; margin: 0 auto; padding: 40px; background: rgba(0,0,0,0.8); border: 2px solid var(--color-primary); border-radius: 8px; text-align: center;">
+                <h3 id="summary-title" style="color: var(--color-secondary); font-size: 1.8rem; margin-bottom: 5px;">THE WAY OF KALARI</h3>
+                <h4 id="summary-subtitle" style="color: #aaa; margin-bottom: 25px;">KERALA</h4>
+                
+                <ul id="summary-lessons" style="list-style: none; padding: 0; text-align: left; font-size: 1.1rem; line-height: 1.6; margin-bottom: 30px;">
+                    <!-- Populated by JS -->
+                </ul>
+                
+                <h4 style="color: var(--color-primary); margin-bottom: 15px; border-bottom: 1px solid #333; padding-bottom: 10px;">KNOWLEDGE DISCOVERED</h4>
+                
+                <ul id="summary-knowledge" style="list-style: none; padding: 0; text-align: left; font-size: 1.1rem; color: #4caf50; margin-bottom: 30px;">
+                    <!-- Populated by JS -->
+                </ul>
+                
+                <div style="background: rgba(76, 175, 80, 0.1); border: 1px solid #4caf50; padding: 15px; border-radius: 4px; margin-bottom: 20px;">
+                    <h4 style="color: #4caf50; margin-bottom: 5px;">CODEX UPDATED</h4>
+                    <p id="summary-codex-msg" style="margin: 0; color: #ddd;">Kalaripayattu has been added to your Codex.</p>
+                </div>
+                
+                <div style="background: rgba(156, 39, 176, 0.1); border: 1px solid #9c27b0; padding: 15px; border-radius: 4px; margin-bottom: 20px;">
+                    <h4 style="color: #9c27b0; margin-bottom: 5px;">🧠 KNOWLEDGE EARNED</h4>
+                    <p style="margin: 5px 0; color: #e1bee7; font-size: 1.2rem; font-weight: bold;" id="summary-knowledge-earned">+150 Knowledge</p>
+                    <p style="margin: 0; color: #ba68c8; font-size: 0.9rem;">TOTAL KNOWLEDGE: <span id="summary-knowledge-total">150</span></p>
+                </div>
+                
+                <button class="btn" onclick="continueJourney()">CONTINUE JOURNEY</button>
+            </div>
+        </div>
+
+        <!-- ============================================== -->
+        <!-- 9. CODEX SCREEN                                -->
+        <!-- ============================================== -->
+        <div id="codex-screen" class="screen">
+            <h2>THE CODEX</h2>
+            <h3 style="color: var(--color-primary); margin-bottom: 20px; text-align: center;">YOUR CULTURAL ARCHIVE</h3>
+            
+            <div style="text-align: center; margin-bottom: 30px; background: rgba(0,0,0,0.6); padding: 15px; border-radius: 8px; border: 1px solid var(--color-secondary); display: inline-block;">
+                <p style="margin: 0 0 10px 0; font-size: 1.1rem; color: #ddd;">Discoveries collected: <span id="codex-collected-count" style="color: var(--color-primary); font-weight: bold;">0</span> / <span id="codex-total-count">5</span></p>
+                <p style="margin: 0; font-size: 1.1rem; color: #ddd;">🧠 Knowledge Score: <span id="codex-knowledge-score" style="color: #9c27b0; font-weight: bold;">0</span></p>
+            </div>
+            
+            <div class="codex-container" style="max-width: 800px; margin: 0 auto; text-align: left;">
+                <div id="codex-list" class="codex-list" style="display: flex; flex-direction: column; gap: 20px;">
+                    <!-- Codex entries populated by JS -->
+                </div>
+            </div>
+            
+            <div class="nav-buttons" style="margin-top: 30px;">
+                <button class="btn btn-secondary" onclick="goToHome()">BACK</button>
+            </div>
+        </div>
+
+        <!-- ============================================== -->
+        <!-- 10. SETTINGS SCREEN                            -->
+        <!-- ============================================== -->
+        <div id="settings-screen" class="screen">
+            <h2>SETTINGS</h2>
+            
+            <div class="settings-container" style="max-width: 400px; margin: 0 auto; text-align: left; background: rgba(0,0,0,0.7); padding: 20px; border: 1px solid var(--color-secondary); border-radius: 8px; margin-bottom: 30px;">
+                <h3 style="color: var(--color-primary); margin-bottom: 20px;">AUDIO</h3>
+                
+                <div style="margin-bottom: 20px;">
+                    <button id="mute-btn" class="btn btn-secondary" style="width: 100%; margin-bottom: 15px;" onclick="toggleSoundFromSettings(this)">🔊 SOUND ON</button>
+                </div>
+
+                <div style="margin-bottom: 20px;">
+                    <label style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+                        <span>Music Volume</span>
+                        <span id="music-vol-val">35%</span>
+                    </label>
+                    <input type="range" id="music-volume" min="0" max="1" step="0.01" value="0.35" style="width: 100%;" 
+                        oninput="window.audioManager.setMusicVolume(this.value); document.getElementById('music-vol-val').textContent = Math.round(this.value * 100) + '%';">
+                </div>
+                
+                <div style="margin-bottom: 30px;">
+                    <label style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+                        <span>SFX Volume</span>
+                        <span id="sfx-vol-val">70%</span>
+                    </label>
+                    <input type="range" id="sfx-volume" min="0" max="1" step="0.01" value="0.70" style="width: 100%;"
+                        oninput="window.audioManager.setSFXVolume(this.value); document.getElementById('sfx-vol-val').textContent = Math.round(this.value * 100) + '%'; window.audioManager.playSFX('button_click.mp3');">
+                </div>
+                
+                <h3 style="color: var(--color-primary); margin-bottom: 20px;">DISPLAY</h3>
+                
+                <div style="margin-bottom: 20px;">
+                    <label style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+                        <span>Brightness</span>
+                        <span id="brightness-val">100%</span>
+                    </label>
+                    <input type="range" id="brightness" min="0.7" max="1.3" step="0.05" value="1" style="width: 100%;"
+                        oninput="updateBrightness(this.value)">
+                </div>
+
+                <div style="margin-bottom: 30px;">
+                    <label style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+                        <span>FPS:</span>
+                        <span id="fps-val">60</span>
+                    </label>
+                    <div style="display: flex; gap: 10px;">
+                        <button id="fps-30-btn" class="btn btn-secondary" style="flex: 1; padding: 10px;" onclick="updateFPS(30)">30 FPS</button>
+                        <button id="fps-60-btn" class="btn" style="flex: 1; padding: 10px;" onclick="updateFPS(60)">60 FPS</button>
+                    </div>
+                </div>
+
+                <div>
+                    <button class="btn btn-secondary" style="width: 100%; border-color: #ff3b3b; color: #ff3b3b;" onclick="resetSettings()">RESET SETTINGS</button>
+                </div>
+            </div>
+
+            <div class="nav-buttons">
+                <button class="btn btn-secondary" onclick="window.audioManager.playSFX('button_click.mp3'); goToHome()">BACK</button>
+            </div>
+            
+            <script>
+                function toggleSoundFromSettings(btn) {
+                    const muted = window.audioManager.toggleMute();
+                    updateGlobalSoundIcons(muted);
+                }
+
+                function updateGlobalSoundIcons(muted) {
+                    const settingsBtn = document.getElementById('mute-btn');
+                    const globalBtn = document.getElementById('global-sound-toggle');
+                    
+                    if (settingsBtn) {
+                        settingsBtn.textContent = muted ? '🔇 SOUND OFF' : '🔊 SOUND ON';
+                        if (muted) {
+                            settingsBtn.classList.remove('btn-secondary');
+                        } else {
+                            settingsBtn.classList.add('btn-secondary');
+                        }
+                    }
+                    
+                    if (globalBtn) {
+                        globalBtn.textContent = muted ? '🔇' : '🔊';
+                        globalBtn.style.color = muted ? '#ff3b3b' : '#fff';
+                    }
+                }
+
+                function updateBrightness(val) {
+                    document.getElementById('brightness-val').textContent = Math.round(val * 100) + '%';
+                    document.getElementById('game-container').style.filter = `brightness(${val})`;
+                    localStorage.setItem('culture_game_brightness', val);
+                }
+
+                function updateFPS(val) {
+                    document.getElementById('fps-val').textContent = val;
+                    if (val === 30) {
+                        document.getElementById('fps-30-btn').classList.remove('btn-secondary');
+                        document.getElementById('fps-60-btn').classList.add('btn-secondary');
+                    } else {
+                        document.getElementById('fps-60-btn').classList.remove('btn-secondary');
+                        document.getElementById('fps-30-btn').classList.add('btn-secondary');
+                    }
+                    localStorage.setItem('culture_game_fps', val);
+                    if (window.gameState) {
+                        window.gameState.fps = val;
+                    }
+                }
+
+                function resetSettings() {
+                    window.audioManager.setMusicVolume(0.35);
+                    window.audioManager.setSFXVolume(0.70);
+                    
+                    const mVol = document.getElementById('music-volume');
+                    const sVol = document.getElementById('sfx-volume');
+                    if (mVol) mVol.value = 0.35;
+                    if (sVol) sVol.value = 0.70;
+                    document.getElementById('music-vol-val').textContent = '35%';
+                    document.getElementById('sfx-vol-val').textContent = '70%';
+
+                    if (window.audioManager.isMuted()) {
+                        window.audioManager.toggleMute();
+                    }
+                    updateGlobalSoundIcons(false);
+
+                    updateBrightness(1.0);
+                    const bInput = document.getElementById('brightness');
+                    if (bInput) bInput.value = 1.0;
+
+                    updateFPS(60);
+                }
+
+                // Initialize UI from current settings on load
+                document.addEventListener('DOMContentLoaded', () => {
+                    if (window.audioManager) {
+                        const mVol = document.getElementById('music-volume');
+                        const sVol = document.getElementById('sfx-volume');
+                        
+                        if(mVol) {
+                            mVol.value = window.audioManager.musicVolume;
+                            document.getElementById('music-vol-val').textContent = Math.round(window.audioManager.musicVolume * 100) + '%';
+                        }
+                        if(sVol) {
+                            sVol.value = window.audioManager.sfxVolume;
+                            document.getElementById('sfx-vol-val').textContent = Math.round(window.audioManager.sfxVolume * 100) + '%';
+                        }
+                        updateGlobalSoundIcons(window.audioManager.isMuted());
+                    }
+
+                    // Brightness
+                    let b = parseFloat(localStorage.getItem('culture_game_brightness'));
+                    if (isNaN(b)) b = 1.0;
+                    const bInput = document.getElementById('brightness');
+                    if (bInput) bInput.value = b;
+                    updateBrightness(b);
+
+                    // FPS
+                    let f = parseInt(localStorage.getItem('culture_game_fps'), 10);
+                    if (isNaN(f)) f = 60;
+                    updateFPS(f);
+                });
+            </script>
+        </div>
+
+        <!-- ============================================== -->
+        <!-- 11. FINAL SCREEN                               -->
+        <!-- ============================================== -->
+        <div id="final-screen" class="screen">
+            <h2 style="color: #d4af37;">🏆 JOURNEY COMPLETE 🏆</h2>
+            <h3>THE CITY OF VICTORY</h3>
+            <div class="final-container">
+                <p style="font-style: italic; margin-bottom: 20px; color: var(--color-text);">
+                    "You have travelled across five regions of India,
+                    faced five challenges, defeated five guardians,
+                    and explored the heritage of five remarkable eras."
+                </p>
+
+                <ul class="final-regions-list"
+                    style="list-style: none; padding: 0; margin-bottom: 20px; font-size: 1.2rem; color: #4caf50;">
+                    <li>✓ Kerala</li>
+                    <li>✓ Rajasthan</li>
+                    <li>✓ Maharashtra</li>
+                    <li>✓ Tamil Nadu</li>
+                    <li>✓ Karnataka</li>
+                </ul>
+
+                <div class="final-stats"
+                    style="margin-top: 20px; border-top: 1px solid var(--color-accent); padding-top: 20px;">
+                    <p>TOTAL XP: <span id="final-total-xp" style="color: #d4af37;">0</span></p>
+                    <p>TOTAL COINS: <span id="final-total-coins" style="color: #d4af37;">0</span></p>
+                    <p>TOTAL SCORE: <span id="final-total-score" style="color: #d4af37;">0</span></p>
+                </div>
+            </div>
+
+            <div class="nav-buttons final-nav">
+                <button class="btn" onclick="playAgain()">PLAY AGAIN</button>
+                <button class="btn" onclick="goToCodex()">VIEW CODEX</button>
+                <button class="btn btn-secondary" onclick="goToWorldMap()">RETURN TO CHAPTERS</button>
+            </div>
+        </div>
+
+        <!-- GLOBAL SOUND TOGGLE -->
+        <div id="global-sound-toggle" onclick="toggleSoundFromSettings(this)" style="position: fixed; bottom: 20px; right: 20px; z-index: 1000; cursor: pointer; font-size: 28px; background: rgba(0,0,0,0.6); width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 2px solid var(--color-secondary); box-shadow: 0 4px 6px rgba(0,0,0,0.3); transition: transform 0.1s;">
+            🔊
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/audio-manager.js?v=7"></script>
+    <script src="js/api.js?v=7"></script>
+    <script src="js/state.js?v=7"></script>
+    <script src="js/navigation.js?v=7"></script>
+    <script src="js/rig-animator.js?v=7"></script>
+    <script src="js/combat-engine.js?v=7"></script>
+    <script src="js/game.js?v=7"></script>
+    <script src="js/app.js?v=7"></script>
+    <script src="js/mobile-controls.js?v=7"></script>
+</body>
+
+</html>

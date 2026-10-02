@@ -1,0 +1,478 @@
+{
+    "scenes": [
+        {
+            "scene_id": "intro_ch1",
+            "chapter_id": 1,
+            "trigger_event": "chapter_start",
+            "description": "Chapter 1 Introduction"
+        },
+        {
+            "scene_id": "master_training_01",
+            "chapter_id": 1,
+            "trigger_event": "special_story_event",
+            "description": "Master and Player conversation"
+        },
+        {
+            "scene_id": "boss_encounter_1",
+            "chapter_id": 1,
+            "trigger_event": "boss_encounter",
+            "description": "Pre-boss fight dialogue"
+        },
+        {
+            "scene_id": "victory_ch1",
+            "chapter_id": 1,
+            "trigger_event": "boss_defeated",
+            "description": "Victory scene after defeating Gurukkal Raman"
+        },
+        {
+            "scene_id": "intro_rajput_01",
+            "chapter_id": 2,
+            "trigger_event": "chapter_start",
+            "description": "Intro to Rajput chapter"
+        },
+        {
+            "scene_id": "victory_rajput_01",
+            "chapter_id": 2,
+            "trigger_event": "boss_defeated",
+            "description": "Victory over Rajput boss"
+        },
+        {
+            "scene_id": "intro_maratha_01",
+            "chapter_id": 3,
+            "trigger_event": "chapter_start",
+            "description": "Intro to Maratha chapter"
+        },
+        {
+            "scene_id": "victory_maratha_01",
+            "chapter_id": 3,
+            "trigger_event": "boss_defeated",
+            "description": "Victory over Maratha boss"
+        },
+        {
+            "scene_id": "intro_chola_01",
+            "chapter_id": 4,
+            "trigger_event": "chapter_start",
+            "description": "Intro to Chola chapter"
+        },
+        {
+            "scene_id": "victory_chola_01",
+            "chapter_id": 4,
+            "trigger_event": "boss_defeated",
+            "description": "Victory over Chola boss"
+        },
+        {
+            "scene_id": "intro_vijayanagara_01",
+            "chapter_id": 5,
+            "trigger_event": "chapter_start",
+            "description": "Intro to Vijayanagara chapter"
+        },
+        {
+            "scene_id": "victory_vijayanagara_01",
+            "chapter_id": 5,
+            "trigger_event": "boss_defeated",
+            "description": "Victory over Vijayanagara boss"
+        }
+    ],
+    "lines": [
+        {
+            "dialogue_id": "intro_1",
+            "scene_id": "intro_ch1",
+            "chapter_id": 1,
+            "sequence_order": 1,
+            "speaker_id": "narrator",
+            "speaker_name": "Narrator",
+            "speaker_role": "narrator",
+            "dialogue_text": "The backwaters of Kerala flow quietly, hiding the ancient secrets of Kalari.",
+            "emotion": "calm",
+            "next_dialogue_id": "intro_2",
+            "is_cinematic": true
+        },
+        {
+            "dialogue_id": "intro_2",
+            "scene_id": "intro_ch1",
+            "chapter_id": 1,
+            "sequence_order": 2,
+            "speaker_id": "player",
+            "speaker_name": "Player",
+            "speaker_role": "protagonist",
+            "dialogue_text": "I must find the master before it's too late.",
+            "emotion": "determined",
+            "next_dialogue_id": null,
+            "is_cinematic": true
+        },
+        {
+            "dialogue_id": "master_1",
+            "scene_id": "master_training_01",
+            "chapter_id": 1,
+            "sequence_order": 1,
+            "speaker_id": "master",
+            "speaker_name": "Old Master",
+            "speaker_role": "mentor",
+            "dialogue_text": "Before you raise your weapon, understand the discipline behind it.",
+            "emotion": "serious",
+            "next_dialogue_id": "master_2",
+            "is_cinematic": true
+        },
+        {
+            "dialogue_id": "master_2",
+            "scene_id": "master_training_01",
+            "chapter_id": 1,
+            "sequence_order": 2,
+            "speaker_id": "player",
+            "speaker_name": "Player",
+            "speaker_role": "protagonist",
+            "dialogue_text": "Then teach me.",
+            "emotion": "eager",
+            "next_dialogue_id": "master_3",
+            "is_cinematic": true
+        },
+        {
+            "dialogue_id": "master_3",
+            "scene_id": "master_training_01",
+            "chapter_id": 1,
+            "sequence_order": 3,
+            "speaker_id": "master",
+            "speaker_name": "Old Master",
+            "speaker_role": "mentor",
+            "dialogue_text": "Knowledge comes before victory. What do you seek?",
+            "emotion": "questioning",
+            "next_dialogue_id": null,
+            "is_cinematic": true
+        },
+        {
+            "dialogue_id": "boss_pre_1",
+            "scene_id": "boss_encounter_1",
+            "chapter_id": 1,
+            "sequence_order": 1,
+            "speaker_id": "boss",
+            "speaker_name": "Gurukkal Raman",
+            "speaker_role": "boss",
+            "dialogue_text": "You dare step into my Kalari? The martial arts were meant for power, not peace.",
+            "emotion": "angry",
+            "next_dialogue_id": "boss_pre_2",
+            "is_cinematic": true
+        },
+        {
+            "dialogue_id": "boss_pre_2",
+            "scene_id": "boss_encounter_1",
+            "chapter_id": 1,
+            "sequence_order": 2,
+            "speaker_id": "player",
+            "speaker_name": "Player",
+            "speaker_role": "protagonist",
+            "dialogue_text": "Power without control is just chaos. I will stop you.",
+            "emotion": "angry",
+            "next_dialogue_id": "boss_pre_3",
+            "is_cinematic": true
+        },
+        {
+            "dialogue_id": "boss_pre_3",
+            "scene_id": "boss_encounter_1",
+            "chapter_id": 1,
+            "sequence_order": 3,
+            "speaker_id": "boss",
+            "speaker_name": "Gurukkal Raman",
+            "speaker_role": "boss",
+            "dialogue_text": "Then show me this 'control' you speak of!",
+            "emotion": "enraged",
+            "next_dialogue_id": null,
+            "is_cinematic": true
+        },
+        {
+            "dialogue_id": "victory_1",
+            "scene_id": "victory_ch1",
+            "chapter_id": 1,
+            "sequence_order": 1,
+            "speaker_id": "boss",
+            "speaker_name": "Gurukkal Raman",
+            "speaker_role": "boss",
+            "dialogue_text": "I... I was defeated. How?",
+            "emotion": "defeated",
+            "next_dialogue_id": "victory_2",
+            "is_cinematic": true
+        },
+        {
+            "dialogue_id": "victory_2",
+            "scene_id": "victory_ch1",
+            "chapter_id": 1,
+            "sequence_order": 2,
+            "speaker_id": "player",
+            "speaker_name": "Player",
+            "speaker_role": "protagonist",
+            "dialogue_text": "Because you forgot the foundations of Kalari. Rest now.",
+            "emotion": "calm",
+            "next_dialogue_id": null,
+            "is_cinematic": true
+        },
+        {
+            "dialogue_id": "master_resp_power",
+            "scene_id": "master_training_01",
+            "chapter_id": 1,
+            "sequence_order": 4,
+            "speaker_id": "master",
+            "speaker_name": "Old Master",
+            "speaker_role": "mentor",
+            "dialogue_text": "Power will consume you if not tempered by wisdom.",
+            "emotion": "disappointed",
+            "next_dialogue_id": null,
+            "is_cinematic": true
+        },
+        {
+            "dialogue_id": "master_resp_know",
+            "scene_id": "master_training_01",
+            "chapter_id": 1,
+            "sequence_order": 5,
+            "speaker_id": "master",
+            "speaker_name": "Old Master",
+            "speaker_role": "mentor",
+            "dialogue_text": "Knowledge is a sharp blade. Use it well.",
+            "emotion": "pleased",
+            "next_dialogue_id": null,
+            "is_cinematic": true
+        },
+        {
+            "dialogue_id": "master_resp_protect",
+            "scene_id": "master_training_01",
+            "chapter_id": 1,
+            "sequence_order": 6,
+            "speaker_id": "master",
+            "speaker_name": "Old Master",
+            "speaker_role": "mentor",
+            "dialogue_text": "A noble path, but the heaviest burden. So be it.",
+            "emotion": "proud",
+            "next_dialogue_id": null,
+            "is_cinematic": true
+        },
+        {
+            "dialogue_id": "ch2_i1",
+            "scene_id": "intro_rajput_01",
+            "chapter_id": 2,
+            "sequence_order": 1,
+            "speaker_id": "master",
+            "speaker_name": "Old Master",
+            "speaker_role": "mentor",
+            "dialogue_text": "The deserts of Rajasthan test the endurance of even the strongest warriors. Remember the Rajput code of honor.",
+            "emotion": "serious",
+            "next_dialogue_id": "ch2_i2",
+            "is_cinematic": true
+        },
+        {
+            "dialogue_id": "ch2_i2",
+            "scene_id": "intro_rajput_01",
+            "chapter_id": 2,
+            "sequence_order": 2,
+            "speaker_id": "player",
+            "speaker_name": "Player",
+            "speaker_role": "protagonist",
+            "dialogue_text": "I will hold Kumbhalgarh Fort or die trying.",
+            "emotion": "determined",
+            "next_dialogue_id": null,
+            "is_cinematic": true
+        },
+        {
+            "dialogue_id": "ch2_v1",
+            "scene_id": "victory_rajput_01",
+            "chapter_id": 2,
+            "sequence_order": 1,
+            "speaker_id": "boss",
+            "speaker_name": "General Vikram Singh",
+            "speaker_role": "boss",
+            "dialogue_text": "You fight with the ferocity of a lion. The fort is yours.",
+            "emotion": "defeated",
+            "next_dialogue_id": "ch2_v2",
+            "is_cinematic": true
+        },
+        {
+            "dialogue_id": "ch2_v2",
+            "scene_id": "victory_rajput_01",
+            "chapter_id": 2,
+            "sequence_order": 2,
+            "speaker_id": "player",
+            "speaker_name": "Player",
+            "speaker_role": "protagonist",
+            "dialogue_text": "Honor to the fallen.",
+            "emotion": "calm",
+            "next_dialogue_id": null,
+            "is_cinematic": true
+        },
+        {
+            "dialogue_id": "ch3_i1",
+            "scene_id": "intro_maratha_01",
+            "chapter_id": 3,
+            "sequence_order": 1,
+            "speaker_id": "master",
+            "speaker_name": "Old Master",
+            "speaker_role": "mentor",
+            "dialogue_text": "The Marathas do not fight head-on when outnumbered. They use Ganimi Kava\u2014guerrilla tactics.",
+            "emotion": "serious",
+            "next_dialogue_id": "ch3_i2",
+            "is_cinematic": true
+        },
+        {
+            "dialogue_id": "ch3_i2",
+            "scene_id": "intro_maratha_01",
+            "chapter_id": 3,
+            "sequence_order": 2,
+            "speaker_id": "player",
+            "speaker_name": "Player",
+            "speaker_role": "protagonist",
+            "dialogue_text": "Like the tiger in the tall grass. I am ready.",
+            "emotion": "determined",
+            "next_dialogue_id": null,
+            "is_cinematic": true
+        },
+        {
+            "dialogue_id": "ch3_v1",
+            "scene_id": "victory_maratha_01",
+            "chapter_id": 3,
+            "sequence_order": 1,
+            "speaker_id": "boss",
+            "speaker_name": "Commander Tariq",
+            "speaker_role": "boss",
+            "dialogue_text": "These mountains... they are cursed.",
+            "emotion": "defeated",
+            "next_dialogue_id": "ch3_v2",
+            "is_cinematic": true
+        },
+        {
+            "dialogue_id": "ch3_v2",
+            "scene_id": "victory_maratha_01",
+            "chapter_id": 3,
+            "sequence_order": 2,
+            "speaker_id": "player",
+            "speaker_name": "Player",
+            "speaker_role": "protagonist",
+            "dialogue_text": "Not cursed. Protected by its people.",
+            "emotion": "calm",
+            "next_dialogue_id": null,
+            "is_cinematic": true
+        },
+        {
+            "dialogue_id": "ch4_i1",
+            "scene_id": "intro_chola_01",
+            "chapter_id": 4,
+            "sequence_order": 1,
+            "speaker_id": "narrator",
+            "speaker_name": "Narrator",
+            "speaker_role": "narrator",
+            "dialogue_text": "The Chola Navy stretches across the ocean, bringing trade, culture, and dominance.",
+            "emotion": "calm",
+            "next_dialogue_id": "ch4_i2",
+            "is_cinematic": true
+        },
+        {
+            "dialogue_id": "ch4_i2",
+            "scene_id": "intro_chola_01",
+            "chapter_id": 4,
+            "sequence_order": 2,
+            "speaker_id": "player",
+            "speaker_name": "Player",
+            "speaker_role": "protagonist",
+            "dialogue_text": "We must secure the sea routes against the pirates.",
+            "emotion": "determined",
+            "next_dialogue_id": null,
+            "is_cinematic": true
+        },
+        {
+            "dialogue_id": "ch4_v1",
+            "scene_id": "victory_chola_01",
+            "chapter_id": 4,
+            "sequence_order": 1,
+            "speaker_id": "boss",
+            "speaker_name": "Admiral Rajendra",
+            "speaker_role": "boss",
+            "dialogue_text": "The sea favors you today.",
+            "emotion": "defeated",
+            "next_dialogue_id": "ch4_v2",
+            "is_cinematic": true
+        },
+        {
+            "dialogue_id": "ch4_v2",
+            "scene_id": "victory_chola_01",
+            "chapter_id": 4,
+            "sequence_order": 2,
+            "speaker_id": "player",
+            "speaker_name": "Player",
+            "speaker_role": "protagonist",
+            "dialogue_text": "The Chola tiger still roars.",
+            "emotion": "calm",
+            "next_dialogue_id": null,
+            "is_cinematic": true
+        },
+        {
+            "dialogue_id": "ch5_i1",
+            "scene_id": "intro_vijayanagara_01",
+            "chapter_id": 5,
+            "sequence_order": 1,
+            "speaker_id": "master",
+            "speaker_name": "Old Master",
+            "speaker_role": "mentor",
+            "dialogue_text": "Behold Vijayanagara, the City of Victory. Its temples are filled with wealth and history.",
+            "emotion": "proud",
+            "next_dialogue_id": "ch5_i2",
+            "is_cinematic": true
+        },
+        {
+            "dialogue_id": "ch5_i2",
+            "scene_id": "intro_vijayanagara_01",
+            "chapter_id": 5,
+            "sequence_order": 2,
+            "speaker_id": "player",
+            "speaker_name": "Player",
+            "speaker_role": "protagonist",
+            "dialogue_text": "We will not let it fall into ruin.",
+            "emotion": "determined",
+            "next_dialogue_id": null,
+            "is_cinematic": true
+        },
+        {
+            "dialogue_id": "ch5_v1",
+            "scene_id": "victory_vijayanagara_01",
+            "chapter_id": 5,
+            "sequence_order": 1,
+            "speaker_id": "boss",
+            "speaker_name": "Commander Krishnadeva",
+            "speaker_role": "boss",
+            "dialogue_text": "You are a true guardian. The city is safe.",
+            "emotion": "defeated",
+            "next_dialogue_id": "ch5_v2",
+            "is_cinematic": true
+        },
+        {
+            "dialogue_id": "ch5_v2",
+            "scene_id": "victory_vijayanagara_01",
+            "chapter_id": 5,
+            "sequence_order": 2,
+            "speaker_id": "player",
+            "speaker_name": "Player",
+            "speaker_role": "protagonist",
+            "dialogue_text": "The City of Victory will endure.",
+            "emotion": "calm",
+            "next_dialogue_id": null,
+            "is_cinematic": true
+        }
+    ],
+    "choices": [
+        {
+            "choice_id": "choice_power",
+            "dialogue_id": "master_3",
+            "choice_text": "Power",
+            "next_dialogue_id": "master_resp_power",
+            "effect": "alignment_power"
+        },
+        {
+            "choice_id": "choice_knowledge",
+            "dialogue_id": "master_3",
+            "choice_text": "Knowledge",
+            "next_dialogue_id": "master_resp_know",
+            "effect": "alignment_knowledge"
+        },
+        {
+            "choice_id": "choice_protect",
+            "dialogue_id": "master_3",
+            "choice_text": "To protect others",
+            "next_dialogue_id": "master_resp_protect",
+            "effect": "alignment_protection"
+        }
+    ]
+}
